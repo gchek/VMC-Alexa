@@ -1,0 +1,158 @@
+{
+  "languageModel": {
+    "types": [
+      {
+        "name": "NUMBERS",
+        "values": [
+          {
+            "id": "1",
+            "name": {
+              "value": "one",
+              "synonyms": []
+            }
+          },
+          {
+            "id": "2",
+            "name": {
+              "value": "two",
+              "synonyms": []
+            }
+          },
+          {
+            "id": "3",
+            "name": {
+              "value": "three",
+              "synonyms": []
+            }
+          },
+          {
+            "id": "4",
+            "name": {
+              "value": "four",
+              "synonyms": []
+            }
+          },
+          {
+            "id": "5",
+            "name": {
+              "value": "five",
+              "synonyms": []
+            }
+          }
+        ]
+      }
+    ],
+    "intents": [
+      {
+        "name": "ADDhosts",
+        "samples": [
+          "Add {Num} hosts",
+          "Add {Num} hosts to my SDDC"
+        ],
+        "slots": [
+          {
+            "name": "Num",
+            "type": "NUMBERS"
+          }
+        ]
+      },
+      {
+        "name": "AMAZON.CancelIntent",
+        "samples": []
+      },
+      {
+        "name": "AMAZON.HelpIntent",
+        "samples": []
+      },
+      {
+        "name": "AMAZON.StopIntent",
+        "samples": [
+          "good bye",
+          "thank you",
+          "Thanks",
+          "thank you very much"
+        ]
+      },
+      {
+        "name": "DisableSlack",
+        "samples": [
+          "disable slack",
+          "disable slack channel",
+          "slack off",
+          "slack channel off"
+        ],
+        "slots": []
+      },
+      {
+        "name": "EnableSlack",
+        "samples": [
+          "enable slack channel",
+          "enable slack",
+          "slack channel on",
+          "slack on"
+        ],
+        "slots": []
+      },
+      {
+        "name": "REMOVEhosts",
+        "samples": [
+          "Remove {Num} hosts",
+          "Remove {Num} hosts from my SDDC"
+        ],
+        "slots": [
+          {
+            "name": "Num",
+            "type": "NUMBERS"
+          }
+        ]
+      },
+      {
+        "name": "SDDClist",
+        "samples": [
+          "list my organisation SDDCs",
+          "list my org",
+          "list my organisation",
+          "my org",
+          "my organisation",
+          "my data center"
+        ],
+        "slots": []
+      },
+      {
+        "name": "SDDCname",
+        "samples": [
+          "what is my SDDC name",
+          "what is my SDDC",
+          "what's my SDDC",
+          "What's my SDDC name"
+        ],
+        "slots": []
+      },
+      {
+        "name": "SDDCstatus",
+        "samples": [
+          "what is my SDDC status",
+          "get my SDDC status",
+          "get my status",
+          "What's my status",
+          "what's my SDDC status",
+          "get status",
+          "my status",
+          "my SDDC status"
+        ],
+        "slots": []
+      },
+      {
+        "name": "Wait",
+        "samples": [
+          "wait",
+          "please wait",
+          "hold on",
+          "be patient"
+        ],
+        "slots": []
+      }
+    ],
+    "invocationName": "vmware cloud"
+  }
+}
