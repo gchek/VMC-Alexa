@@ -29,9 +29,9 @@ config = configparser.ConfigParser()
 config.read("./config.ini")
 strProdURL      = config.get("vmcConfig", "strProdURL")
 strCSPProdURL   = config.get("vmcConfig", "strCSPProdURL")
-strAccessKey    = config.get("vmcConfig", "strAccessKey")
-sddcID          = config.get("vmcConfig", "sddcID")
-tenantID        = config.get("vmcConfig", "tenantID")
+Refresh_Token   = config.get("vmcConfig", "Refresh_Token")
+SDDC_ID         = config.get("vmcConfig", "SDDC_ID")
+ORG_ID          = config.get("vmcConfig", "ORG_ID")
 slackURL        = config.get("vmcConfig", "slackURL")
 
 class data():
@@ -59,9 +59,9 @@ def get_access_token(myKey):
 
 
 def get_sddc_data():
-    data.sessiontoken = get_access_token(strAccessKey)
+    data.sessiontoken = get_access_token(Refresh_Token)
     myHeader = {'csp-auth-token': data.sessiontoken}
-    myURL = strProdURL + "/vmc/api/orgs/" + tenantID + "/sddcs/" + sddcID
+    myURL = strProdURL + "/vmc/api/orgs/" + ORG_ID + "/sddcs/" + SDDC_ID
     response = requests.get(myURL, headers=myHeader)
     json_response = response.json()
     data.sddc_hosts     = 0
@@ -85,7 +85,7 @@ get_sddc_data()
 
 def build_sddc_list():
     myHeader = {'csp-auth-token': data.sessiontoken}
-    myURL = strProdURL + "/vmc/api/orgs/" + tenantID + "/sddcs"
+    myURL = strProdURL + "/vmc/api/orgs/" + ORG_ID + "/sddcs"
     response = requests.get(myURL, headers=myHeader)
     json_response = response.json()
     del sddc_list[:]
@@ -101,7 +101,7 @@ def build_sddc_list():
 
 def add_sddc_hosts(hosts):
     myHeader = {'csp-auth-token': data.sessiontoken}
-    myURL = strProdURL + "/vmc/api/orgs/" + tenantID + "/sddcs/" + sddcID + "/esxs"
+    myURL = strProdURL + "/vmc/api/orgs/" + ORG_ID + "/sddcs/" + SDDC_ID + "/esxs"
     strRequest = {"num_hosts": hosts}
     response = requests.post(myURL, json=strRequest, headers=myHeader)
     if response.status_code != 202:
@@ -113,7 +113,7 @@ def add_sddc_hosts(hosts):
 
 def remove_sddc_hosts(hosts):
     myHeader = {'csp-auth-token': data.sessiontoken}
-    myURL = strProdURL + "/vmc/api/orgs/" + tenantID + "/sddcs/" + sddcID + "/esxs?action=remove"
+    myURL = strProdURL + "/vmc/api/orgs/" + ORG_ID + "/sddcs/" + SDDC_ID + "/esxs?action=remove"
     strRequest = {"num_hosts": hosts}
     response = requests.post(myURL, json=strRequest, headers=myHeader)
     if response.status_code != 202:
